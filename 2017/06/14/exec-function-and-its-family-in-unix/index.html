@@ -84,17 +84,17 @@
 
 
 
-<meta name="description" content="在浅析进程:从操作系统的角度理解概念这篇文章中讲到用bash shell加载可执行文件时是通过fork一个子进程调用exec函数来执行目标文件的，那么exec函数有什么样的黑魔法才能在子进程中去执行程序的运行呢？">
+<meta name="description" content="在浅析进程:从操作系统的角度理解概念这篇文章中讲到用bash shell加载可执行文件时是通过fork一个子进程调用execve函数来执行目标文件的，那么execve函数有什么样的黑魔法才能在子进程中去执行程序的运行呢？">
 <meta name="keywords" content="Unix/Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unix中exec函数工作原理">
 <meta property="og:url" content="http://codingshell.xyz/2017/06/14/exec-function-and-its-family-in-unix/index.html">
 <meta property="og:site_name" content="CodingShell">
-<meta property="og:description" content="在浅析进程:从操作系统的角度理解概念这篇文章中讲到用bash shell加载可执行文件时是通过fork一个子进程调用exec函数来执行目标文件的，那么exec函数有什么样的黑魔法才能在子进程中去执行程序的运行呢？">
-<meta property="og:updated_time" content="2017-06-16T06:12:24.000Z">
+<meta property="og:description" content="在浅析进程:从操作系统的角度理解概念这篇文章中讲到用bash shell加载可执行文件时是通过fork一个子进程调用execve函数来执行目标文件的，那么execve函数有什么样的黑魔法才能在子进程中去执行程序的运行呢？">
+<meta property="og:updated_time" content="2017-06-16T09:26:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unix中exec函数工作原理">
-<meta name="twitter:description" content="在浅析进程:从操作系统的角度理解概念这篇文章中讲到用bash shell加载可执行文件时是通过fork一个子进程调用exec函数来执行目标文件的，那么exec函数有什么样的黑魔法才能在子进程中去执行程序的运行呢？">
+<meta name="twitter:description" content="在浅析进程:从操作系统的角度理解概念这篇文章中讲到用bash shell加载可执行文件时是通过fork一个子进程调用execve函数来执行目标文件的，那么execve函数有什么样的黑魔法才能在子进程中去执行程序的运行呢？">
 
 
 
@@ -381,7 +381,7 @@
       
 
       
-        <p>在<a href="http://codingshell.xyz/2017/01/20/understanding-process-from-system-perspective/">浅析进程:从操作系统的角度理解概念</a>这篇文章中讲到用bash shell加载可执行文件时是通过fork一个子进程调用exec函数来执行目标文件的，那么exec函数有什么样的黑魔法才能在子进程中去执行程序的运行呢？<br><a id="more"></a></p>
+        <p>在<a href="http://codingshell.xyz/2017/01/20/understanding-process-from-system-perspective/">浅析进程:从操作系统的角度理解概念</a>这篇文章中讲到用bash shell加载可执行文件时是通过fork一个子进程调用execve函数来执行目标文件的，那么execve函数有什么样的黑魔法才能在子进程中去执行程序的运行呢？<br><a id="more"></a></p>
 <h3 id="进程和程序之间的区别"><a href="#进程和程序之间的区别" class="headerlink" title="进程和程序之间的区别"></a>进程和程序之间的区别</h3><p>在理解Unix的执行模型前首先要理解进程和程序之间有什么区别。首先，进程的概念很好理解——正在运行程序的实例。比如打开着的浏览器、音乐播放器等，当我们切换的时候就是从一个正在运行的实例切换到另一个正在运行的实例。那程序是什么呢？说白了就是我们写的代码，用一个比喻来说明这两者的区别。代码就类似于汽车的各种零部件，组合零部件的设计图就是程序，工人按照设计图、把零部件装配到流水线上的汽车原型等一些列动作就是进程。总结下，进程是实现程序各种功能的载体，程序是所有代码的集合。</p>
 <h3 id="Unix-Execution-Model"><a href="#Unix-Execution-Model" class="headerlink" title="Unix Execution Model"></a>Unix Execution Model</h3><h3 id="exec函数之间的关系"><a href="#exec函数之间的关系" class="headerlink" title="exec函数之间的关系"></a>exec函数之间的关系</h3><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
 <li><a href="https://stackoverflow.com/questions/4204915/please-explain-exec-function-and-its-family" target="_blank" rel="external">https://stackoverflow.com/questions/4204915/please-explain-exec-function-and-its-family</a></li>
