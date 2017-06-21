@@ -91,7 +91,7 @@
 <meta property="og:url" content="http://codingshell.xyz/2017/06/14/exec-function-and-its-family-in-unix/index.html">
 <meta property="og:site_name" content="CodingShell">
 <meta property="og:description" content="在浅析进程:从操作系统的角度理解概念这篇文章中讲到用bash shell加载可执行文件时是通过fork一个子进程调用execve函数来执行目标文件的，那么execve函数有什么样的黑魔法才能在子进程中去执行程序的运行呢？">
-<meta property="og:updated_time" content="2017-06-16T09:26:25.000Z">
+<meta property="og:updated_time" content="2017-06-21T13:42:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unix中exec函数工作原理">
 <meta name="twitter:description" content="在浅析进程:从操作系统的角度理解概念这篇文章中讲到用bash shell加载可执行文件时是通过fork一个子进程调用execve函数来执行目标文件的，那么execve函数有什么样的黑魔法才能在子进程中去执行程序的运行呢？">
@@ -382,9 +382,11 @@
 
       
         <p>在<a href="http://codingshell.xyz/2017/01/20/understanding-process-from-system-perspective/">浅析进程:从操作系统的角度理解概念</a>这篇文章中讲到用bash shell加载可执行文件时是通过fork一个子进程调用execve函数来执行目标文件的，那么execve函数有什么样的黑魔法才能在子进程中去执行程序的运行呢？<br><a id="more"></a></p>
-<h3 id="进程和程序之间的区别"><a href="#进程和程序之间的区别" class="headerlink" title="进程和程序之间的区别"></a>进程和程序之间的区别</h3><p>在理解Unix的执行模型前首先要理解进程和程序之间有什么区别。首先，进程的概念很好理解——正在运行程序的实例。比如打开着的浏览器、音乐播放器等，当我们切换的时候就是从一个正在运行的实例切换到另一个正在运行的实例。那程序是什么呢？说白了就是我们写的代码，用一个比喻来说明这两者的区别。代码就类似于汽车的各种零部件，组合零部件的设计图就是程序，工人按照设计图、把零部件装配到流水线上的汽车原型等一些列动作就是进程。总结下，进程是实现程序各种功能的载体，程序是所有代码的集合。</p>
+<h3 id="概念预览"><a href="#概念预览" class="headerlink" title="概念预览"></a>概念预览</h3><h4 id="进程和程序之间的区别"><a href="#进程和程序之间的区别" class="headerlink" title="进程和程序之间的区别"></a>进程和程序之间的区别</h4><p>在理解Unix的执行模型前首先要理解进程和程序之间有什么区别。首先，进程的概念很好理解——正在运行程序的实例。比如打开着的浏览器、音乐播放器等，当我们切换的时候就是从一个正在运行的实例切换到另一个正在运行的实例。那程序是什么呢？说白了就是我们写的代码，用一个比喻来说明这两者的区别。代码就类似于汽车的各种零部件，组合零部件的设计图就是程序，工人按照设计图、把零部件装配到流水线上的汽车原型等一些列动作就是进程。总结下，进程是实现程序各种功能的载体，程序是所有代码的集合。</p>
+<h4 id="原语"><a href="#原语" class="headerlink" title="原语"></a>原语</h4><p>一般来说，在系统态也就是内核态中执行的某些特定的操作的函数称为原语。因此进程控制原语就是内核提供的操作进程能力——包括进程的创建、销毁、等待和唤醒，exec函数就是其中之一。当进程调用exec函数时，把当前进程执行的程序替换为新的程序，并从新程序的main函数开始执行。</p>
 <h3 id="Unix-Execution-Model"><a href="#Unix-Execution-Model" class="headerlink" title="Unix Execution Model"></a>Unix Execution Model</h3><h3 id="exec函数之间的关系"><a href="#exec函数之间的关系" class="headerlink" title="exec函数之间的关系"></a>exec函数之间的关系</h3><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
 <li><a href="https://stackoverflow.com/questions/4204915/please-explain-exec-function-and-its-family" target="_blank" rel="external">https://stackoverflow.com/questions/4204915/please-explain-exec-function-and-its-family</a></li>
+<li><a href="http://ettc.sysu.edu.cn/2005wlkc/caozuoxitong/book/chapter4/lesson2/lesson2.htm" target="_blank" rel="external">http://ettc.sysu.edu.cn/2005wlkc/caozuoxitong/book/chapter4/lesson2/lesson2.htm</a></li>
 </ol>
 
       
@@ -596,7 +598,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#进程和程序之间的区别"><span class="nav-number">1.</span> <span class="nav-text">进程和程序之间的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unix-Execution-Model"><span class="nav-number">2.</span> <span class="nav-text">Unix Execution Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exec函数之间的关系"><span class="nav-number">3.</span> <span class="nav-text">exec函数之间的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念预览"><span class="nav-number">1.</span> <span class="nav-text">概念预览</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#进程和程序之间的区别"><span class="nav-number">1.1.</span> <span class="nav-text">进程和程序之间的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原语"><span class="nav-number">1.2.</span> <span class="nav-text">原语</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unix-Execution-Model"><span class="nav-number">2.</span> <span class="nav-text">Unix Execution Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exec函数之间的关系"><span class="nav-number">3.</span> <span class="nav-text">exec函数之间的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
