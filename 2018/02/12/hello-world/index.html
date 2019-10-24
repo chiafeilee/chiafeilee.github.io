@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Unix/Linux," />
+  <meta name="keywords" content="programmer, c++, python, c#, android, 安卓, 程序员, 程序猿" />
 
 
 
@@ -84,17 +84,17 @@
 
 
 
-<meta name="description" content="在浅析进程:从操作系统的角度理解概念这篇文章中讲到用bash shell加载可执行文件时是通过fork一个子进程调用execve函数来执行目标文件的，那么execve函数有什么样的黑魔法才能在子进程中去执行程序的运行呢？">
-<meta name="keywords" content="Unix/Linux">
+<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Unix中exec函数工作原理">
-<meta property="og:url" content="http://codingshell.xyz/2017/06/14/exec-function-and-its-family-in-unix/index.html">
+<meta property="og:title" content="Hello World">
+<meta property="og:url" content="http://bytenotes.xyz/2018/02/12/hello-world/index.html">
 <meta property="og:site_name" content="CodingShell">
-<meta property="og:description" content="在浅析进程:从操作系统的角度理解概念这篇文章中讲到用bash shell加载可执行文件时是通过fork一个子进程调用execve函数来执行目标文件的，那么execve函数有什么样的黑魔法才能在子进程中去执行程序的运行呢？">
-<meta property="og:updated_time" content="2017-06-21T14:04:38.000Z">
+<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-12T13:49:02.566Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Unix中exec函数工作原理">
-<meta name="twitter:description" content="在浅析进程:从操作系统的角度理解概念这篇文章中讲到用bash shell加载可执行文件时是通过fork一个子进程调用execve函数来执行目标文件的，那么execve函数有什么样的黑魔法才能在子进程中去执行程序的运行呢？">
+<meta name="twitter:title" content="Hello World">
+<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://codingshell.xyz/2017/06/14/exec-function-and-its-family-in-unix/"/>
+  <link rel="canonical" href="http://bytenotes.xyz/2018/02/12/hello-world/"/>
 
 
 
 
 
-  <title> Unix中exec函数工作原理 | CodingShell </title>
+  <title> Hello World | CodingShell </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -269,7 +269,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingshell.xyz/2017/06/14/exec-function-and-its-family-in-unix/">
+  <link itemprop="mainEntityOfPage" href="http://bytenotes.xyz/2018/02/12/hello-world/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="ChiaFei">
@@ -293,7 +293,7 @@
             
             
               
-                Unix中exec函数工作原理
+                Hello World
               
             
           </h1>
@@ -306,8 +306,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-14T21:54:17+08:00">
-                2017-06-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-12T21:49:02+08:00">
+                2018-02-12
               </time>
             
 
@@ -317,31 +317,13 @@
           </span>
 
           
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/OS/" itemprop="url" rel="index">
-                    <span itemprop="name">OS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2017/06/14/exec-function-and-its-family-in-unix/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/14/exec-function-and-its-family-in-unix/" itemprop="commentCount"></span>
+                <a href="/2018/02/12/hello-world/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/02/12/hello-world/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -350,15 +332,6 @@
           
 
           
-          
-             <span id="/2017/06/14/exec-function-and-its-family-in-unix/" class="leancloud_visitors" data-flag-title="Unix中exec函数工作原理">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
           
 
           
@@ -381,14 +354,15 @@
       
 
       
-        <p>在<a href="http://codingshell.xyz/2017/01/20/understanding-process-from-system-perspective/">浅析进程:从操作系统的角度理解概念</a>这篇文章中讲到用bash shell加载可执行文件时是通过fork一个子进程调用execve函数来执行目标文件的，那么execve函数有什么样的黑魔法才能在子进程中去执行程序的运行呢？<br><a id="more"></a></p>
-<h3 id="概念预览"><a href="#概念预览" class="headerlink" title="概念预览"></a>概念预览</h3><h4 id="进程和程序之间的区别"><a href="#进程和程序之间的区别" class="headerlink" title="进程和程序之间的区别"></a>进程和程序之间的区别</h4><p>在理解Unix的执行模型前首先要理解进程和程序之间有什么区别。首先，进程的概念很好理解——正在运行程序的实例。比如打开着的浏览器、音乐播放器等，当我们切换的时候就是从一个正在运行的实例切换到另一个正在运行的实例。那程序是什么呢？说白了就是我们写的代码，用一个比喻来说明这两者的区别。代码就类似于汽车的各种零部件，组合零部件的设计图就是程序，工人按照设计图、把零部件装配到流水线上的汽车原型等一些列动作就是进程。总结下，进程是实现程序各种功能的载体，程序是所有代码的集合。</p>
-<h4 id="原语"><a href="#原语" class="headerlink" title="原语"></a>原语</h4><p>一般来说，在系统态也就是内核态中执行的某些特定的操作的函数称为原语。因此进程控制原语就是内核提供的操作进程能力——包括进程的创建、销毁、等待和唤醒，例如fork、exec等函数。</p>
-<h3 id="exec函数进程控制模型"><a href="#exec函数进程控制模型" class="headerlink" title="exec函数进程控制模型"></a>exec函数进程控制模型</h3><p>与fork函数不同的是，exec函数不是去创建一个新的进程去执行程序。exec函数的作用是当进程调用时把该进程执行的程序完全替换为新的程序，并从新程序的main函数处开始执行。</p>
-<h3 id="exec函数之间的关系"><a href="#exec函数之间的关系" class="headerlink" title="exec函数之间的关系"></a>exec函数之间的关系</h3><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
-<li><a href="https://stackoverflow.com/questions/4204915/please-explain-exec-function-and-its-family" target="_blank" rel="external">https://stackoverflow.com/questions/4204915/please-explain-exec-function-and-its-family</a></li>
-<li><a href="http://ettc.sysu.edu.cn/2005wlkc/caozuoxitong/book/chapter4/lesson2/lesson2.htm" target="_blank" rel="external">http://ettc.sysu.edu.cn/2005wlkc/caozuoxitong/book/chapter4/lesson2/lesson2.htm</a></li>
-</ol>
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
       
     </div>
@@ -410,26 +384,20 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Unix-Linux/" rel="tag"># Unix/Linux</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/04/how-isinstance-works-in-python/" rel="next" title="Python中isinstance的工作原理">
+                <i class="fa fa-chevron-left"></i> Python中isinstance的工作原理
+              </a>
             
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/04/dive-into-python-with-statement/" rel="prev" title="Python with statement实现原理及应用">
-                Python with statement实现原理及应用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -527,7 +495,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -544,7 +512,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -599,7 +567,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念预览"><span class="nav-number">1.</span> <span class="nav-text">概念预览</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#进程和程序之间的区别"><span class="nav-number">1.1.</span> <span class="nav-text">进程和程序之间的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原语"><span class="nav-number">1.2.</span> <span class="nav-text">原语</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exec函数进程控制模型"><span class="nav-number">2.</span> <span class="nav-text">exec函数进程控制模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exec函数之间的关系"><span class="nav-number">3.</span> <span class="nav-text">exec函数之间的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -620,7 +588,7 @@
         <div class="copyright" >
   
   &copy;  2016 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -739,9 +707,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'kafeimao';
-      var disqus_identifier = '2017/06/14/exec-function-and-its-family-in-unix/';
+      var disqus_identifier = '2018/02/12/hello-world/';
 
-      var disqus_title = "Unix中exec函数工作原理";
+      var disqus_title = "Hello World";
 
 
       function run_disqus_script(disqus_script) {
@@ -798,113 +766,6 @@
 
 
   
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("8u36UUw6MXwpMoK7kNDJ2j4w-gzGzoHsz", "9Rm8u1uQpm9zEEQ8PupNnT0c");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
 
   
 
