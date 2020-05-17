@@ -58,7 +58,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;bytenotes.xyz&#x2F;images&#x2F;883DDE37-A2E9-4D86-A139-ED5EBDDD4DBB.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;bytenotes.xyz&#x2F;images&#x2F;4A9A091E-B70A-4071-A797-67DFC1153270.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;bytenotes.xyz&#x2F;images&#x2F;2D70D9A5-1A76-44CE-A104-4C343254EACC.png">
-<meta property="og:updated_time" content="2020-05-15T08:19:02.347Z">
+<meta property="og:updated_time" content="2020-05-17T07:38:34.491Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;bytenotes.xyz&#x2F;images&#x2F;883DDE37-A2E9-4D86-A139-ED5EBDDD4DBB.png">
 
@@ -205,10 +205,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-05-15 13:56:36 / 修改时间：16:19:02" itemprop="dateCreated datePublished" datetime="2020-05-15T13:56:36+08:00">2020-05-15</time>
+              <time title="创建时间：2020-05-15 13:56:36" itemprop="dateCreated datePublished" datetime="2020-05-15T13:56:36+08:00">2020-05-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-17 15:38:34" itemprop="dateModified" datetime="2020-05-17T15:38:34+08:00">2020-05-17</time>
+              </span>
 
           
 
@@ -240,13 +246,13 @@
 <li>接到一个信号</li>
 <li>最后一个线程对取消请求做出响应</li>
 </ul>
-<h3 id="进程终止状态通知"><a href="#进程终止状态通知" class="headerlink" title="进程终止状态通知"></a>进程终止状态通知</h3><p>正常终止的函数将<code>退出状态</code>（exit status）作为参数传递给函数，异常终止情况下，内核产生一个指示其异常终止原因的<br><code>终止状态</code>（termination status），终止进程的父进程通过<code>wait</code>和<code>waitpid</code>函数获取终止状态</p>
+<h3 id="进程终止状态通知"><a href="#进程终止状态通知" class="headerlink" title="进程终止状态通知"></a>进程终止状态通知</h3><p>正常终止的函数将<code>退出状态</code>（exit status）作为参数传递给函数，异常终止情况下，内核产生一个指示其异常终止原因的<code>终止状态</code>（termination status），终止进程的父进程通过<code>wait</code>和<code>waitpid</code>函数获取终止状态</p>
 <h3 id="进程终止状态未定义情形"><a href="#进程终止状态未定义情形" class="headerlink" title="进程终止状态未定义情形"></a>进程终止状态未定义情形</h3><ul>
 <li>调用正常终止函数不带终止状态（exit status）</li>
 <li>main执行一个无返回值的return语句</li>
 <li>main没有声明返回类型为整型</li>
 </ul>
-<p><strong>对于父进程已经终止的所有进程，它们的父进程都改变为<code>init</code>(ID为1)进程；一个已经终止、但父进程尚未对其进行<br>“善后”（释放子进程的资源）的进程称为<code>僵尸进程</code></strong></p>
+<p><strong>对于父进程已经终止的所有进程，它们的父进程都改变为<code>init</code>(ID为1)进程；一个已经终止、但父进程尚未对其进行”善后”（释放子进程的资源）的进程称为<code>僵尸进程</code></strong></p>
 <h3 id="atexit函数"><a href="#atexit函数" class="headerlink" title="atexit函数"></a>atexit函数</h3><p>定义：</p>
 <blockquote>
 <p>register a function to be called on exit</p>
@@ -271,13 +277,13 @@
 <li>堆<br>通常在堆中进行动态存储分配，位于未初始化数据段和栈之间</li>
 </ul>
 <h2 id="存储空间分配"><a href="#存储空间分配" class="headerlink" title="存储空间分配"></a>存储空间分配</h2><p>大多数的malloc和free的实现都不减小进程的存储空间，释放的空间可供以后分配，保持在malloc池中而不返回给内核</p>
-<h2 id="函数setjmp和longjmp"><a href="#函数setjmp和longjmp" class="headerlink" title="函数setjmp和longjmp"></a>函数setjmp和longjmp</h2><p> 这两个函数为非局部goto，非局部指的是，这不是由普通的C语言的goto语句在一个函数内跳转，<br> 而是在栈上跳过若干调用帧，返回到当前函数调用路径上的某一个函数中</p>
-<p> 全局变量(global)、静态变量(static)和易失变量(volatile)不受优化影响，在longjump之后，<br> 它们的值是最近所呈现的值，自动变量和寄存器(register)变量受影响。<br> 存放在存储器的变量将具有longjmp时的值，在CPU和浮点寄存器中的值则恢复为setjmp时的值。</p>
+<h2 id="函数setjmp和longjmp"><a href="#函数setjmp和longjmp" class="headerlink" title="函数setjmp和longjmp"></a>函数setjmp和longjmp</h2><p>这两个函数为非局部goto，非局部指的是，这不是由普通的C语言的goto语句在一个函数内跳转，而是在栈上跳过若干调用帧，返回到当前函数调用路径上的某一个函数中</p>
+<p>全局变量(global)、静态变量(static)和易失变量(volatile)不受优化影响，在longjump之后，它们的值是最近所呈现的值，自动变量和寄存器(register)变量受影响。<br>存放在存储器的变量将具有longjmp时的值，在CPU和浮点寄存器中的值则恢复为setjmp时的值。</p>
 <h3 id="setjmp使用范围"><a href="#setjmp使用范围" class="headerlink" title="setjmp使用范围"></a>setjmp使用范围</h3><ul>
-<li>the entire controlling expression of if, switch, while, do-while, for<br><code>switch(setjmp(env)) { ..</code></li>
-<li>one operand of a relational or equality operator with the other operand an integer constant expression, with the resulting expression being the entire controlling expression of if, switch, while, do-while, for<br><code>if(setjmp(env) > 10) { ...</code></li>
-<li>the operand of a unary ! operator with the resulting expression being the entire controlling expression of if, switch, while, do-while, for<br><code>while(!setjmp(env)) { ...</code></li>
-<li>the entire expression of an expression statement (possibly cast to void)<br><code>setjmp(env);</code></li>
+<li>the entire controlling expression of if, switch, while, do-while, for<br> <code>switch(setjmp(env)) { ..</code></li>
+<li>one operand of a relational or equality operator with the other operand an integer constant expression, with the resulting expression being the entire controlling expression of if, switch, while, do-while, for<br> <code>if(setjmp(env) > 10) { ...</code></li>
+<li>the operand of a unary ! operator with the resulting expression being the entire controlling expression of if, switch, while, do-while, for<br> <code>while(!setjmp(env)) { ...</code></li>
+<li>the entire expression of an expression statement (possibly cast to void)<br> <code>setjmp(env);</code></li>
 </ul>
 <p><strong>如果出现在其他上下文中，行为则是undefined</strong></p>
 <script>
