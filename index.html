@@ -177,6 +177,75 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bytenotes.xyz/2020/05/15/unix-process-env/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ChiaFei">
+      <meta itemprop="description" content="Keep Thinking, Keep Praticing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="字节笔记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/15/unix-process-env/" class="post-title-link" itemprop="url">进程环境笔记</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-15 13:56:36 / 修改时间：16:19:02" itemprop="dateCreated datePublished" datetime="2020-05-15T13:56:36+08:00">2020-05-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="main函数"><a href="#main函数" class="headerlink" title="main函数"></a>main函数</h2><p>原型为：</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>argc</code>为命令行参数的数目，<code>argv</code>为指向参数的各个指针所构成的数组，即高级语言中的kv数据结构map</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/05/15/unix-process-env/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://bytenotes.xyz/2020/05/14/python-obj-ref/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +277,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-15 13:13:02" itemprop="dateModified" datetime="2020-05-15T13:13:02+08:00">2020-05-15</time>
+                <time title="修改时间：2020-05-17 15:32:38" itemprop="dateModified" datetime="2020-05-17T15:32:38+08:00">2020-05-17</time>
               </span>
 
           
@@ -222,7 +291,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p><strong>Important Facts</strong><br>Python不像其他语言如C可以声明一个变量而不赋值，必须在赋值表达式中声明并给定初始值，如<code>None</code></p>
+          <p><code>==</code>运算符比较两个对象的值（对象中保存的值），<code>is</code>比较对象的标识（内存地址）</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/05/14/python-obj-ref/#more" rel="contents">
@@ -864,89 +933,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://bytenotes.xyz/2017/01/20/understanding-process-from-system-perspective/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ChiaFei">
-      <meta itemprop="description" content="Keep Thinking, Keep Praticing">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="字节笔记">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2017/01/20/understanding-process-from-system-perspective/" class="post-title-link" itemprop="url">浅析进程:从操作系统的角度理解概念</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2017-01-20 14:59:14" itemprop="dateCreated datePublished" datetime="2017-01-20T14:59:14+08:00">2017-01-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-25 10:26:52" itemprop="dateModified" datetime="2019-11-25T10:26:52+08:00">2019-11-25</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/OS/" itemprop="url" rel="index">
-                    <span itemprop="name">OS</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>进程</strong>这一概念是所有程序员都绕不过的坎儿，而这个一概念恰是操作系统中最核心的概念之一，那什么是进程呢？它构建的基础是什么呢？它又是如何运行的呢？它又是如何进行切换来实现伪并发呢？本文将带着这些问题来研究进程这一概念。本文基于Linux内核（<a href="https://docs.microsoft.com/en-us/windows/wsl/wsl2-about" target="_blank" rel="noopener">使用的Bash On Ubuntu On Windows</a>），语言使用的是C，本文讨论将限于单核CPU。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2017/01/20/understanding-process-from-system-perspective/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -994,13 +980,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">

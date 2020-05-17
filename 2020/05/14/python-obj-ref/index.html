@@ -47,16 +47,16 @@
   };
 </script>
 
-  <meta name="description" content="变量Important FactsPython不像其他语言如C可以声明一个变量而不赋值，必须在赋值表达式中声明并给定初始值，如None">
-<meta name="keywords" content="notes,python">
+  <meta name="description" content="==运算符比较两个对象的值（对象中保存的值），is比较对象的标识（内存地址）">
+<meta name="keywords" content="python,notes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python对象引用、可变性笔记">
 <meta property="og:url" content="https:&#x2F;&#x2F;bytenotes.xyz&#x2F;2020&#x2F;05&#x2F;14&#x2F;python-obj-ref&#x2F;index.html">
 <meta property="og:site_name" content="字节笔记">
-<meta property="og:description" content="变量Important FactsPython不像其他语言如C可以声明一个变量而不赋值，必须在赋值表达式中声明并给定初始值，如None">
+<meta property="og:description" content="==运算符比较两个对象的值（对象中保存的值），is比较对象的标识（内存地址）">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;bytenotes.xyz&#x2F;images&#x2F;ADDA2F61-BF57-431B-B348-EC3DFE0291F2.png">
-<meta property="og:updated_time" content="2020-05-15T05:13:02.241Z">
+<meta property="og:updated_time" content="2020-05-17T07:32:38.226Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;bytenotes.xyz&#x2F;images&#x2F;ADDA2F61-BF57-431B-B348-EC3DFE0291F2.png">
 
@@ -211,7 +211,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-15 13:13:02" itemprop="dateModified" datetime="2020-05-15T13:13:02+08:00">2020-05-15</time>
+                <time title="修改时间：2020-05-17 15:32:38" itemprop="dateModified" datetime="2020-05-17T15:32:38+08:00">2020-05-17</time>
               </span>
 
           
@@ -225,7 +225,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p><strong>Important Facts</strong><br>Python不像其他语言如C可以声明一个变量而不赋值，必须在赋值表达式中声明并给定初始值，如<code>None</code></p>
+        <p><code>==</code>运算符比较两个对象的值（对象中保存的值），<code>is</code>比较对象的标识（内存地址）</p>
 <a id="more"></a>
 
 <h2 id="相等性"><a href="#相等性" class="headerlink" title="相等性"></a>相等性</h2><p><code>==</code>运算符比较两个对象的值（对象中保存的值），<code>is</code>比较对象的标识（内存地址）<br><strong>在变量和单例值(singleton)之间的比较时，应该使用<code>is</code>，例如<code>None</code></strong></p>
@@ -260,7 +260,25 @@
 </blockquote>
 <p>浅复制和深复制的不同点仅仅在于复合对象(compund objects)上——对象包含其他对象，由此可得出一个简单的结论，即浅复制是一个<code>one level deep</code></p>
 <p>参考：<br><a href="https://realpython.com/copying-python-objects/" target="_blank" rel="noopener">Shallow vs Deep Copying of Python Objects</a><br><a href="https://docs.python.org/3/library/copy.html" target="_blank" rel="noopener">Shallow and deep copy operations</a></p>
-<h2 id="引用作为函数参数"><a href="#引用作为函数参数" class="headerlink" title="引用作为函数参数"></a>引用作为函数参数</h2><script>
+<h2 id="函数传参方式"><a href="#函数传参方式" class="headerlink" title="函数传参方式"></a>函数传参方式</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p><strong>Important Facts</strong><br>Python不像其他语言如C可以声明一个变量而不赋值，必须在赋值表达式中声明并给定初始值，如<code>None</code></p>
+<h4 id="概念：命名-Naming-和绑定-Binding"><a href="#概念：命名-Naming-和绑定-Binding" class="headerlink" title="概念：命名(Naming)和绑定(Binding)"></a>概念：命名(Naming)和绑定(Binding)</h4><p>Python中的“变量”和其他的语言如C、Go中的概念很不一样——先在内存中申请个“盒子”（定义变量），然后往里装东西（赋值），Python是先在内存里未命名的“盒子”里装东西，然后贴上“标签”（变量名），Python中“变量”通常称为“名称”（names）</p>
+<blockquote>
+<p>Names refer to objects. Names are introduced by name binding operations<br>—— <a href="https://docs.python.org/3/reference/executionmodel.html" target="_blank" rel="noopener">Python Execution Model</a></p>
+</blockquote>
+<p>名称在绑定操作的时候引入，即通常意义上的“赋值”操作，有4种情形会发生绑定操作：</p>
+<ul>
+<li>传给函数的形式参数</li>
+<li>import语句</li>
+<li>类与函数定义</li>
+<li>以标识符为目标的赋值，如for循环的开头、with语句、except子句的as之后</li>
+</ul>
+<p>参考：</p>
+<ul>
+<li><a href="https://docs.python.org/3/reference/executionmodel.html" target="_blank" rel="noopener">Execution model</a></li>
+<li><a href="https://jeffknupp.com/blog/2012/11/13/is-python-callbyvalue-or-callbyreference-neither/" target="_blank" rel="noopener">Is Python call-by-value or call-by-reference?</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Evaluation_strategy" target="_blank" rel="noopener">Evaluation strategy</a></li>
+</ul>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -287,8 +305,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/notes/" rel="tag"># notes</a>
               <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/notes/" rel="tag"># notes</a>
           </div>
 
         
@@ -300,7 +318,10 @@
     <a href="/2020/05/12/c-storage-class-notes/" rel="prev" title="C存储类别笔记">
       <i class="fa fa-chevron-left"></i> C存储类别笔记
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/15/unix-process-env/" rel="next" title="进程环境笔记">
+      进程环境笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -338,7 +359,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相等性"><span class="nav-number">2.</span> <span class="nav-text">相等性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么用is比较None"><span class="nav-number">2.1.</span> <span class="nav-text">为什么用is比较None</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元组的相对不可变性"><span class="nav-number">2.2.</span> <span class="nav-text">元组的相对不可变性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象复制"><span class="nav-number">3.</span> <span class="nav-text">对象复制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#浅复制-Shallow-Copy"><span class="nav-number">3.1.</span> <span class="nav-text">浅复制(Shallow Copy)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深复制-Deep-Copy"><span class="nav-number">3.2.</span> <span class="nav-text">深复制(Deep Copy)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用作为函数参数"><span class="nav-number">4.</span> <span class="nav-text">引用作为函数参数</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#相等性"><span class="nav-number">1.</span> <span class="nav-text">相等性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么用is比较None"><span class="nav-number">1.1.</span> <span class="nav-text">为什么用is比较None</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元组的相对不可变性"><span class="nav-number">1.2.</span> <span class="nav-text">元组的相对不可变性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象复制"><span class="nav-number">2.</span> <span class="nav-text">对象复制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#浅复制-Shallow-Copy"><span class="nav-number">2.1.</span> <span class="nav-text">浅复制(Shallow Copy)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深复制-Deep-Copy"><span class="nav-number">2.2.</span> <span class="nav-text">深复制(Deep Copy)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数传参方式"><span class="nav-number">3.</span> <span class="nav-text">函数传参方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">3.1.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念：命名-Naming-和绑定-Binding"><span class="nav-number">3.1.1.</span> <span class="nav-text">概念：命名(Naming)和绑定(Binding)</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -351,13 +372,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
