@@ -56,7 +56,9 @@
 <meta property="og:description" content="==运算符比较两个对象的值（对象中保存的值），is比较对象的标识（内存地址）">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;bytenotes.xyz&#x2F;images&#x2F;ADDA2F61-BF57-431B-B348-EC3DFE0291F2.png">
-<meta property="og:updated_time" content="2020-05-17T07:35:06.907Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;bytenotes.xyz&#x2F;images&#x2F;C7BCABB5-CE93-4875-8156-30FD232A7D8B.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;bytenotes.xyz&#x2F;images&#x2F;2359FF33-31A0-4FED-A8CA-8B0B2DE08BF5.png">
+<meta property="og:updated_time" content="2020-05-20T07:21:55.448Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;bytenotes.xyz&#x2F;images&#x2F;ADDA2F61-BF57-431B-B348-EC3DFE0291F2.png">
 
@@ -211,7 +213,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-17 15:35:06" itemprop="dateModified" datetime="2020-05-17T15:35:06+08:00">2020-05-17</time>
+                <time title="修改时间：2020-05-20 15:21:55" itemprop="dateModified" datetime="2020-05-20T15:21:55+08:00">2020-05-20</time>
               </span>
 
           
@@ -260,23 +262,105 @@
 </blockquote>
 <p>浅复制和深复制的不同点仅仅在于复合对象(compund objects)上——对象包含其他对象，由此可得出一个简单的结论，即浅复制是一个<code>one level deep</code></p>
 <p>参考：<br><a href="https://realpython.com/copying-python-objects/" target="_blank" rel="noopener">Shallow vs Deep Copying of Python Objects</a><br><a href="https://docs.python.org/3/library/copy.html" target="_blank" rel="noopener">Shallow and deep copy operations</a></p>
-<h2 id="函数传参方式"><a href="#函数传参方式" class="headerlink" title="函数传参方式"></a>函数传参方式</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p><strong>Important Facts</strong><br>Python不像其他语言如C可以声明一个变量而不赋值，必须在赋值表达式中声明并给定初始值，如<code>None</code></p>
-<h4 id="概念：命名-Naming-和绑定-Binding"><a href="#概念：命名-Naming-和绑定-Binding" class="headerlink" title="概念：命名(Naming)和绑定(Binding)"></a>概念：命名(Naming)和绑定(Binding)</h4><p>Python中的“变量”和其他的语言如C、Go中的概念很不一样——先在内存中申请个“盒子”（定义变量），然后往里装东西（赋值），Python是先在内存里未命名的“盒子”里装东西，然后贴上“标签”（变量名），Python中“变量”通常称为“名称”（names）</p>
-<blockquote>
-<p>Names refer to objects. Names are introduced by name binding operations<br>—— <a href="https://docs.python.org/3/reference/executionmodel.html" target="_blank" rel="noopener">Python Execution Model</a></p>
+<h2 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h2><h3 id="概念：块-block"><a href="#概念：块-block" class="headerlink" title="概念：块(block)"></a>概念：块(block)</h3><blockquote>
+<p>A block is a piece of Python program text that is executed as a unit —— <a href="https://docs.python.org/3/reference/executionmodel.html" target="_blank" rel="noopener">Execution model</a></p>
 </blockquote>
-<p>名称在绑定操作的时候引入，即通常意义上的“赋值”操作，有4种情形会发生绑定操作：</p>
+<p>块有以下几种：</p>
+<ul>
+<li>模块(module)</li>
+<li>函数体(function body)</li>
+<li>类定义(class definition)</li>
+<li>交互式命令行</li>
+<li>脚本命令（解释器上使用<code>-c</code>选项指定命令）</li>
+<li>内置函数<code>exec()</code>和<code>eval()</code>执行的参数</li>
+</ul>
+<h4 id="概念：名称绑定-Name-Binding"><a href="#概念：名称绑定-Name-Binding" class="headerlink" title="概念：名称绑定(Name Binding)"></a>概念：名称绑定(Name Binding)</h4><p>Python中的“变量”和其他的语言如C、Go中的概念很不一样——先在内存中申请个“盒子”（定义变量），然后往里装东西（赋值），Python是先在内存里未命名的“盒子”里装东西，然后贴上“标签”（变量名），Python中“变量”通常称为“名称”（names）</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># python是动态语言，无法用定义式声明变量，所以变量名一定要和和一个对象绑定</span></span><br><span class="line">name = <span class="literal">None</span></span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>Names refer to objects. Names are introduced by name binding operations —— <a href="https://docs.python.org/3/reference/executionmodel.html" target="_blank" rel="noopener">Execution Model</a></p>
+</blockquote>
+<p>名称绑定有6种情形：</p>
 <ul>
 <li>传给函数的形式参数</li>
-<li>import语句</li>
+<li><code>import</code>语句</li>
 <li>类与函数定义</li>
-<li>以标识符为目标的赋值，如for循环的开头、with语句、except子句的as之后</li>
+<li>以标识符为目标的赋值，如<code>for</code>循环的开头、<code>with</code>语句、<code>except</code>子句的as之后</li>
+<li><code>import</code>语句<code>from...import *</code>形式，绑定导入模块中定义的所有名称，私有变量除外（以下划线开头）</li>
+<li><code>del</code>语句</li>
+</ul>
+<p>3种变量：</p>
+<ul>
+<li>local variable</li>
+<li>global variable</li>
+<li>free variable</li>
+</ul>
+<p><strong>Free variables are not resolved in the nearest enclosing namespace, but int the global namespace</strong></p>
+<p>参考：</p>
+<ul>
+<li><a href="https://docs.python.org/3/reference/executionmodel.html#binding-of-names" target="_blank" rel="noopener">Binding of names</a></li>
+</ul>
+<h3 id="概念：作用域"><a href="#概念：作用域" class="headerlink" title="概念：作用域"></a>概念：作用域</h3><blockquote>
+<p>A scope defines the visibility of a name within a block, is a textual region of a Python program where a namespace is direct accessible.</p>
+</blockquote>
+<p>作用域定义了变量的可访问性和存储期（即生存期），通过把<code>names</code>映射到<code>objects</code>的字典来实现</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="string">'outer variable'</span> <span class="comment"># 全局变量</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">()</span>:</span></span><br><span class="line">    x = <span class="string">'inner variable'</span> <span class="comment"># 本地变量，覆盖外部名称x指向的值</span></span><br><span class="line">    print(x)</span><br><span class="line"></span><br><span class="line"><span class="meta">>>> </span>foo()</span><br><span class="line">inner variable</span><br><span class="line"><span class="meta">>>> </span>print(x)</span><br><span class="line">outer variable</span><br><span class="line">>>></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="概念：Namespace"><a href="#概念：Namespace" class="headerlink" title="概念：Namespace"></a>概念：Namespace</h3><blockquote>
+<p>A namespace is a container where names are mapped to objects, they are used to avoid confusions in cases where same names exist in different namesapces</p>
+</blockquote>
+<p><code>namespace</code>本质上就是变量存储的地方，通过属性<code>__dict__</code>可以访问到存储的names到objects的映射，不同的存储空间存储不同的名称，如下图：</p>
+<p><img src="/images/C7BCABB5-CE93-4875-8156-30FD232A7D8B.png" alt="e32c2c11ecf216681c8ba2b43275add4"></p>
+<p><em>图片来源</em>：<a href="https://www.programiz.com/python-programming/namespace" target="_blank" rel="noopener">https://www.programiz.com/python-programming/namespace</a></p>
+<p>因此对于namespace最重要的一点就是隔离了名称，分两部分看这个概念<code>name+space</code>，<code>name</code>指唯一标识符，<code>space</code>指标识符关联的<code>scope</code></p>
+<p>3种namespace说明：</p>
+<ul>
+<li><u>Built-in Namespace</u><br>Python解释器启动的时候创建，在运行时永久不会被删除</li>
+<li><u>Global Namespace</u><br>加载模块后，将创建全局namespace</li>
+<li><u>Local Namespace</u><br>函数调用时创建</li>
 </ul>
 <p>参考：</p>
 <ul>
-<li><a href="https://docs.python.org/3/reference/executionmodel.html" target="_blank" rel="noopener">Execution model</a></li>
-<li><a href="https://jeffknupp.com/blog/2012/11/13/is-python-callbyvalue-or-callbyreference-neither/" target="_blank" rel="noopener">Is Python call-by-value or call-by-reference?</a></li>
+<li><a href="https://www.geeksforgeeks.org/namespaces-and-scope-in-python" target="_blank" rel="noopener">Namespaces and Scope in Python</a></li>
+</ul>
+<h3 id="LEGB规则"><a href="#LEGB规则" class="headerlink" title="LEGB规则"></a>LEGB规则</h3><p>name解析规则即LEGB，以名称作用域命名，分别是Local,Enclosing,Global,Built-in，并以此顺序解析名称</p>
+<p><img src="/images/2359FF33-31A0-4FED-A8CA-8B0B2DE08BF5.png" alt="681a98115b61f4a768777c231860e5cd"><br><em>图片来源</em>：<a href="https://www.askpython.com/python/python-namespace-variable-scope-resolution-legb" target="_blank" rel="noopener">https://www.askpython.com/python/python-namespace-variable-scope-resolution-legb</a></p>
+<h4 id="Local-Scope"><a href="#Local-Scope" class="headerlink" title="Local Scope"></a>Local Scope</h4><p>范围：函数或lambda表达式，在调用时创建</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">incr</span><span class="params">(x)</span>:</span></span><br><span class="line">    val = x + <span class="number">1</span></span><br><span class="line">    print(<span class="string">'incr value is:'</span>, val) <span class="comment"># val在调用incr函数时创建，函数返回时便销毁了</span></span><br><span class="line">    </span><br><span class="line"><span class="meta">>>> </span>incr(<span class="number">1</span>)</span><br><span class="line">incr value <span class="keyword">is</span>:  <span class="number">2</span></span><br><span class="line"><span class="meta">>>> </span>val <span class="comment"># 在incr函数外是无法访问val名称</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"<stdin>"</span>, line <span class="number">1</span>, <span class="keyword">in</span> <module></span><br><span class="line">NameError: name <span class="string">'val'</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br><span class="line"><span class="meta">>>> </span>incr.__code__.co_varnames <span class="comment"># 可以通过__code__属性检查函数的名称和参数</span></span><br><span class="line">(<span class="string">'x'</span>, <span class="string">'val'</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="Enclosing-Scope"><a href="#Enclosing-Scope" class="headerlink" title="Enclosing Scope"></a>Enclosing Scope</h4><p>范围：存在嵌套函数(nested function)</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outer</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># outer的作用域是inner的enclosing scope</span></span><br><span class="line">    greeting = <span class="string">"hello"</span> <span class="comment"># 在enclosing scope中变量也叫nonlocal名称</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="comment"># 所有在inner之前创建的名称在inner中也是可见的</span></span><br><span class="line">        print(<span class="string">"greeting from inner:"</span>, greeting)</span><br><span class="line">        print(<span class="string">"say from inner:"</span>, say) <span class="comment"># NameError: free variable 'say' referenced before assignment in enclosing scope</span></span><br><span class="line"> </span><br><span class="line">    inner()</span><br><span class="line">    say = <span class="string">"hi"</span></span><br><span class="line">    print(<span class="string">"greeting from outer:"</span>, greeting)</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="Global-Scope"><a href="#Global-Scope" class="headerlink" title="Global Scope"></a>Global Scope</h4><p>范围：Python程序、脚本或模块的最外层<br><strong>Note</strong></p>
+<ol>
+<li>如果需要在函数中修改全局名称的值，如果不使用<code>global</code>关键字，那么函数中的名称的修改只作用于函数本身，全局名称的值不会被修改</li>
+</ol>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">g = <span class="number">10</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">()</span>:</span></span><br><span class="line">    g = <span class="number">11</span></span><br><span class="line">    print(g)</span><br><span class="line"><span class="meta">>>> </span>foo()</span><br><span class="line"><span class="number">11</span></span><br><span class="line"><span class="meta">>>> </span>print(g)</span><br><span class="line"><span class="number">10</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>如果在函数中使用全局名称前既没有使用<code>global</code>关键字也没有绑定值，那么出抛出<code>UnboundLocalError</code>错误</li>
+</ol>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">g = <span class="number">10</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">()</span>:</span></span><br><span class="line">    print(g) <span class="comment"># 程序本以为是引用全局名称，但是下面又创建了一个本地同名变量</span></span><br><span class="line">    g = <span class="number">11</span></span><br><span class="line"><span class="meta">>>> </span>foo()</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"<stdin>"</span>, line <span class="number">1</span>, <span class="keyword">in</span> <module></span><br><span class="line">  File <span class="string">"<stdin>"</span>, line <span class="number">2</span>, <span class="keyword">in</span> foo</span><br><span class="line">UnboundLocalError: local variable <span class="string">'g'</span> referenced before assignment</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="Built-in-Scope"><a href="#Built-in-Scope" class="headerlink" title="Built-in Scope"></a>Built-in Scope</h4><p>范围：Python内置名称</p>
+<p>运行Python解释器的时自动加载内置对象，交互控制台通过dir函数可查看</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">>>> </span>dir(__builtins__)</span><br><span class="line">[<span class="string">'ArithmeticError'</span>, <span class="string">'AssertionError'</span>, <span class="string">'AttributeError'</span>, <span class="string">'BaseException'</span>, <span class="string">'BufferError'</span>, <span class="string">'BytesWarning'</span>, <span class="string">'DeprecationWarning'</span>, <span class="string">'EOFError'</span>, <span class="string">'Ellipsis'</span>, <span class="string">'EnvironmentError'</span>, <span class="string">'Exception'</span>, <span class="string">'False'</span>, <span class="string">'FloatingPointError'</span>, <span class="string">'FutureWarning'</span>, <span class="string">'GeneratorExit'</span>, <span class="string">'IOError'</span>, <span class="string">'ImportError'</span>... ]</span><br><span class="line">>>></span><br></pre></td></tr></tbody></table></figure>
+
+<p>参考：</p>
+<ul>
+<li><a href="https://realpython.com/python-scope-legb-rule/" target="_blank" rel="noopener">Python Scope & the LEGB Rule</a></li>
+<li><a href="https://docs.python.org/3/reference/executionmodel.html#resolution-of-names" target="_blank" rel="noopener">Resolution of names</a></li>
+</ul>
+<h3 id="求值策略"><a href="#求值策略" class="headerlink" title="求值策略"></a>求值策略</h3><p>求值策略决定两件事</p>
+<blockquote>
+<p>when to evaluate the arguments of the function call and what kind of value to pass to the function<br>—— <a href="https://en.wikipedia.org/wiki/Evaluation_strategy" target="_blank" rel="noopener">Evaluation strategy</a></p>
+</blockquote>
+<p>最常见的求值策略就是<code>call by value</code>及<code>call by reference</code></p>
+<p>参考:</p>
+<ul>
 <li><a href="https://en.wikipedia.org/wiki/Evaluation_strategy" target="_blank" rel="noopener">Evaluation strategy</a></li>
+<li><a href="https://www.python-course.eu/passing_arguments.php" target="_blank" rel="noopener">Parameter Passing</a></li>
+<li><a href="https://jeffknupp.com/blog/2012/11/13/is-python-callbyvalue-or-callbyreference-neither/" target="_blank" rel="noopener">Is Python call-by-value or call-by-reference?</a></li>
 </ul>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -359,7 +443,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#相等性"><span class="nav-number">1.</span> <span class="nav-text">相等性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么用is比较None"><span class="nav-number">1.1.</span> <span class="nav-text">为什么用is比较None</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元组的相对不可变性"><span class="nav-number">1.2.</span> <span class="nav-text">元组的相对不可变性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象复制"><span class="nav-number">2.</span> <span class="nav-text">对象复制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#浅复制-Shallow-Copy"><span class="nav-number">2.1.</span> <span class="nav-text">浅复制(Shallow Copy)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深复制-Deep-Copy"><span class="nav-number">2.2.</span> <span class="nav-text">深复制(Deep Copy)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数传参方式"><span class="nav-number">3.</span> <span class="nav-text">函数传参方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">3.1.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念：命名-Naming-和绑定-Binding"><span class="nav-number">3.1.1.</span> <span class="nav-text">概念：命名(Naming)和绑定(Binding)</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#相等性"><span class="nav-number">1.</span> <span class="nav-text">相等性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么用is比较None"><span class="nav-number">1.1.</span> <span class="nav-text">为什么用is比较None</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元组的相对不可变性"><span class="nav-number">1.2.</span> <span class="nav-text">元组的相对不可变性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象复制"><span class="nav-number">2.</span> <span class="nav-text">对象复制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#浅复制-Shallow-Copy"><span class="nav-number">2.1.</span> <span class="nav-text">浅复制(Shallow Copy)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深复制-Deep-Copy"><span class="nav-number">2.2.</span> <span class="nav-text">深复制(Deep Copy)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数调用"><span class="nav-number">3.</span> <span class="nav-text">函数调用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念：块-block"><span class="nav-number">3.1.</span> <span class="nav-text">概念：块(block)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念：名称绑定-Name-Binding"><span class="nav-number">3.1.1.</span> <span class="nav-text">概念：名称绑定(Name Binding)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念：作用域"><span class="nav-number">3.2.</span> <span class="nav-text">概念：作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念：Namespace"><span class="nav-number">3.3.</span> <span class="nav-text">概念：Namespace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LEGB规则"><span class="nav-number">3.4.</span> <span class="nav-text">LEGB规则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Local-Scope"><span class="nav-number">3.4.1.</span> <span class="nav-text">Local Scope</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Enclosing-Scope"><span class="nav-number">3.4.2.</span> <span class="nav-text">Enclosing Scope</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Global-Scope"><span class="nav-number">3.4.3.</span> <span class="nav-text">Global Scope</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Built-in-Scope"><span class="nav-number">3.4.4.</span> <span class="nav-text">Built-in Scope</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#求值策略"><span class="nav-number">3.5.</span> <span class="nav-text">求值策略</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
