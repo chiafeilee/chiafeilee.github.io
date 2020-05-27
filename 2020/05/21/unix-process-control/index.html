@@ -56,7 +56,8 @@
 <meta property="og:description" content="进程模型 计算机上所有可运行的软件，被组织成若干顺序进程，简称进程。一个进程就是一个正在执行程序的实例，包括程序计数器、寄存器和变量的当前值">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;bytenotes.xyz&#x2F;images&#x2F;BC8ADF48-AF6E-4EE7-A116-55FCF855AB6B.png">
-<meta property="og:updated_time" content="2020-05-21T16:23:59.525Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;bytenotes.xyz&#x2F;images&#x2F;ED8AAC5C-3890-4D25-8CBE-D1B50761D208.png">
+<meta property="og:updated_time" content="2020-05-27T13:42:01.033Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;bytenotes.xyz&#x2F;images&#x2F;BC8ADF48-AF6E-4EE7-A116-55FCF855AB6B.png">
 
@@ -211,7 +212,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-22 00:23:59" itemprop="dateModified" datetime="2020-05-22T00:23:59+08:00">2020-05-22</time>
+                <time title="修改时间：2020-05-27 21:42:01" itemprop="dateModified" datetime="2020-05-27T21:42:01+08:00">2020-05-27</time>
               </span>
 
           
@@ -298,7 +299,50 @@
 <p><strong>在exec前后实际用户ID和实际组ID保持不变，而有效用户ID是否改变取决于所执行程序文件的设置用户ID位和设置组ID位是否设置</strong></p>
 <p><strong>函数示例</strong></p>
 <p><em>exec_demo.c</em></p>
-<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string"><unistd.h></span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>{</span><br><span class="line">    execl(<span class="string">"/bin/echo"</span>, <span class="string">"echo"</span>, <span class="string">"hello"</span>, <span class="string">"execl"</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// char *args[] = {"echo", "hello", "execv", NULL};</span></span><br><span class="line">    <span class="comment">// execv("/bin/echo", "echo", args);</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// execlp("echo", "echo", "hello", "execlp", NULL);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br><span class="line">>> gcc -o exec_demo exec_demo.c</span><br><span class="line">>> ./exec_demo</span><br><span class="line">hello execl</span><br></pre></td></tr></tbody></table></figure><script>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string"><unistd.h></span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>{</span><br><span class="line">    execl(<span class="string">"/bin/echo"</span>, <span class="string">"echo"</span>, <span class="string">"hello"</span>, <span class="string">"execl"</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// char *args[] = {"echo", "hello", "execv", NULL};</span></span><br><span class="line">    <span class="comment">// execv("/bin/echo", "echo", args);</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// execlp("echo", "echo", "hello", "execlp", NULL);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br><span class="line">>> gcc -o exec_demo exec_demo.c</span><br><span class="line">>> ./exec_demo</span><br><span class="line">hello execl</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="更改用户ID和组ID"><a href="#更改用户ID和组ID" class="headerlink" title="更改用户ID和组ID"></a>更改用户ID和组ID</h2><p><strong>原因：</strong><br>系统超级权限及访问控制（读、写等），是基于用户ID和组ID的，因此当需要增加权限时，需要更换自己的用户ID或组ID，使得新的ID具有合适的超级权限或访问资源的能力</p>
+<h3 id="最小特权原则（Priciple-of-lease-privilege-PoLP"><a href="#最小特权原则（Priciple-of-lease-privilege-PoLP" class="headerlink" title="最小特权原则（Priciple of lease privilege, PoLP)"></a>最小特权原则（Priciple of lease privilege, PoLP)</h3><blockquote>
+<p>PoLP, requires that in a particular abstraction layer of a computing envrionment, every module(such as process, a user, a program, depending on the subject) must be able to access only the information and resoruces that are necessary for its legitimate purpose —— <a href="https://en.wikipedia.org/wiki/Principle_of_least_privilege" target="_blank" rel="noopener">Principle of least privilege</a></p>
+</blockquote>
+<h3 id="更改ID规则"><a href="#更改ID规则" class="headerlink" title="更改ID规则"></a>更改ID规则</h3><ul>
+<li>若进程具有超级用户特权，则<code>setuid</code>函数将实际用户ID(real user)、有效用户ID(effective user)以及保存的设置用户ID(saved set-user-ID)设置为<code>uid</code></li>
+<li>若进程没有超级用户特权，但是<code>uid</code>等于实际用户ID或保存的设置用户ID，则<code>setuid</code>只将有效用户ID设置为uid。不更改实际用户ID和保存的设置用户ID</li>
+<li>如果上面连个条件都不满足，则<code>error</code>设置为<code>EPERM</code>，并返回-1</li>
+</ul>
+<p>三个ID的注意点：</p>
+<ul>
+<li>只有超级用户进程可以更改实际用户ID</li>
+<li>仅当对程序文件设置了设置用户ID位时，exec函数才设置用户有效ID</li>
+<li>保存的设置用户ID是由exec复制有效用户ID而得到的</li>
+</ul>
+<h3 id="更改用户ID的函数"><a href="#更改用户ID的函数" class="headerlink" title="更改用户ID的函数"></a>更改用户ID的函数</h3><p><img src="/images/ED8AAC5C-3890-4D25-8CBE-D1B50761D208.png" alt="4f07b3bc87534b3d766e93ede2c47127"></p>
+<h2 id="解释器文件（Interpreter-File）"><a href="#解释器文件（Interpreter-File）" class="headerlink" title="解释器文件（Interpreter File）"></a>解释器文件（Interpreter File）</h2><p>格式</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#! pathname [optional-argument]</span></span><br></pre></td></tr></tbody></table></figure>
+<p><code>pathname</code>通常是绝对路径名</p>
+<blockquote>
+<p>解释器文件的识别是由内核作为exec系统调用处理的一部分来完成</p>
+</blockquote>
+<h2 id="进程会计（Process-Accounting）"><a href="#进程会计（Process-Accounting）" class="headerlink" title="进程会计（Process Accounting）"></a>进程会计（Process Accounting）</h2><blockquote>
+<p>Process accounting is the method of recording and summaring commands executed on Linux(or Unix). Process accounting enables you to keep detailed accounting information for the system resources used, their allocation among users, and system monitoring. —— <a href="https://tldp.org/HOWTO/Process-Accounting/pa.html" target="_blank" rel="noopener">What is process accounting?</a></p>
+</blockquote>
+<p>启用该选项时，每当进程结束时内核就会写一个会计记录，保存进程表中，一个新进程创建时初始化；会记记录对应于进程而不是程序，这意味着一个进程顺序执行了3个程序（A exec B， B exec C，最后C exit）只会写一个记录，但CPU时间是A、B和C之和</p>
+<p>进程信息统计常用的命令：</p>
+<ul>
+<li>accton：打开或关闭进程会计功能</li>
+<li>ac：统计登陆/登出小时</li>
+<li>sa: 系统会记统计</li>
+</ul>
+<p>参考：</p>
+<ul>
+<li><a href="https://www.tecmint.com/how-to-monitor-user-activity-with-psacct-or-acct-tools/" target="_blank" rel="noopener">How to Monitor User Activity with psacct or acct Tools</a></li>
+</ul>
+<h2 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h2><blockquote>
+<p>调度策略和优先级是由内核确定的，进程可以通过调整<code>nice</code>值选择以更低的优先级运行（通过调整<code>nice</code>值降低它对CPU的占有，因此它是友好的）</p>
+</blockquote>
+<p>NZERO确认</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> nzero;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> defined(NZERO)</span></span><br><span class="line">  nzero = NZERO;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">elif</span> defined(_SC_NZERO)</span></span><br><span class="line">  nzero = sysconf(_SC_NZERO)</span><br><span class="line">#<span class="keyword">else</span></span><br><span class="line">#error NZERO undefined</span><br><span class="line">#endif</span><br></pre></td></tr></tbody></table></figure>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -339,7 +383,10 @@
     <a href="/2020/05/15/unix-process-env/" rel="prev" title="进程环境笔记">
       <i class="fa fa-chevron-left"></i> 进程环境笔记
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/26/python-custom-class/" rel="next" title="Python自定义类笔记">
+      Python自定义类笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -377,7 +424,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#进程模型"><span class="nav-number">1.</span> <span class="nav-text">进程模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程标识"><span class="nav-number">2.</span> <span class="nav-text">进程标识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进程ID"><span class="nav-number">2.1.</span> <span class="nav-text">进程ID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#专用进程"><span class="nav-number">2.2.</span> <span class="nav-text">专用进程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fork函数"><span class="nav-number">3.</span> <span class="nav-text">fork函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#COW-Copy-On-Write-技术"><span class="nav-number">3.1.</span> <span class="nav-text">COW(Copy-On-Write)技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件共享"><span class="nav-number">3.2.</span> <span class="nav-text">文件共享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#竞争条件（race-condition）"><span class="nav-number">3.3.</span> <span class="nav-text">竞争条件（race condition）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wait和waitpid函数"><span class="nav-number">4.</span> <span class="nav-text">wait和waitpid函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#exec函数"><span class="nav-number">5.</span> <span class="nav-text">exec函数</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#进程模型"><span class="nav-number">1.</span> <span class="nav-text">进程模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程标识"><span class="nav-number">2.</span> <span class="nav-text">进程标识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进程ID"><span class="nav-number">2.1.</span> <span class="nav-text">进程ID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#专用进程"><span class="nav-number">2.2.</span> <span class="nav-text">专用进程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fork函数"><span class="nav-number">3.</span> <span class="nav-text">fork函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#COW-Copy-On-Write-技术"><span class="nav-number">3.1.</span> <span class="nav-text">COW(Copy-On-Write)技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件共享"><span class="nav-number">3.2.</span> <span class="nav-text">文件共享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#竞争条件（race-condition）"><span class="nav-number">3.3.</span> <span class="nav-text">竞争条件（race condition）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wait和waitpid函数"><span class="nav-number">4.</span> <span class="nav-text">wait和waitpid函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#exec函数"><span class="nav-number">5.</span> <span class="nav-text">exec函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改用户ID和组ID"><span class="nav-number">6.</span> <span class="nav-text">更改用户ID和组ID</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最小特权原则（Priciple-of-lease-privilege-PoLP"><span class="nav-number">6.1.</span> <span class="nav-text">最小特权原则（Priciple of lease privilege, PoLP)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改ID规则"><span class="nav-number">6.2.</span> <span class="nav-text">更改ID规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改用户ID的函数"><span class="nav-number">6.3.</span> <span class="nav-text">更改用户ID的函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解释器文件（Interpreter-File）"><span class="nav-number">7.</span> <span class="nav-text">解释器文件（Interpreter File）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程会计（Process-Accounting）"><span class="nav-number">8.</span> <span class="nav-text">进程会计（Process Accounting）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程调度"><span class="nav-number">9.</span> <span class="nav-text">进程调度</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -390,7 +437,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

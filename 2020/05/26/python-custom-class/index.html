@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="字节笔记" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://bytenotes.xyz').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="classmethod与staticmethodclassmethod123456789101112131415161718class Animal:    @classmethod    def clsmethod(cls, x):        print(&quot;clsmethod(cls, x)&quot;, cls, x)class Cat(Animal):    pass   In [2]: a =">
+<meta name="keywords" content="notes,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python自定义类笔记">
+<meta property="og:url" content="https:&#x2F;&#x2F;bytenotes.xyz&#x2F;2020&#x2F;05&#x2F;26&#x2F;python-custom-class&#x2F;index.html">
+<meta property="og:site_name" content="字节笔记">
+<meta property="og:description" content="classmethod与staticmethodclassmethod123456789101112131415161718class Animal:    @classmethod    def clsmethod(cls, x):        print(&quot;clsmethod(cls, x)&quot;, cls, x)class Cat(Animal):    pass   In [2]: a =">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-05-27T13:46:26.156Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://bytenotes.xyz/2020/05/26/python-custom-class/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Python自定义类笔记 | 字节笔记</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">字节笔记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">keep thinking, keep praticing</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/chiafeilee" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bytenotes.xyz/2020/05/26/python-custom-class/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ChiaFei">
+      <meta itemprop="description" content="Keep Thinking, Keep Praticing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="字节笔记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python自定义类笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-26 23:52:28" itemprop="dateCreated datePublished" datetime="2020-05-26T23:52:28+08:00">2020-05-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-27 21:46:26" itemprop="dateModified" datetime="2020-05-27T21:46:26+08:00">2020-05-27</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="classmethod与staticmethod"><a href="#classmethod与staticmethod" class="headerlink" title="classmethod与staticmethod"></a>classmethod与staticmethod</h2><h3 id="classmethod"><a href="#classmethod" class="headerlink" title="classmethod"></a>classmethod</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span>:</span></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clsmethod</span><span class="params">(cls, x)</span>:</span></span><br><span class="line">        print(<span class="string">"clsmethod(cls, x)"</span>, cls, x)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span><span class="params">(Animal)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">   </span><br><span class="line">In [<span class="number">2</span>]: a = Animal()</span><br><span class="line"></span><br><span class="line">In [<span class="number">3</span>]: a.clsmethod(<span class="number">1</span>) <span class="comment"># 调用方式1</span></span><br><span class="line">clsmethod(cls, x) <<span class="class"><span class="keyword">class</span> '<span class="title">__main__</span>.<span class="title">Animal</span>'> 1</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">In</span> [4]:</span> Animal.clsmethod(<span class="number">1</span>) <span class="comment"># 调用方式2</span></span><br><span class="line">clsmethod(cls, x) <<span class="class"><span class="keyword">class</span> '<span class="title">__main__</span>.<span class="title">Animal</span>'> 1</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">In</span> [5]:</span> Cat.clsmethod(<span class="number">2</span>) <span class="comment"># 派生类对象作为cls参数传入类方法</span></span><br><span class="line">clsmethod(cls, x) <<span class="class"><span class="keyword">class</span> '<span class="title">__main__</span>.<span class="title">Cat</span>'> 2</span></span><br></pre></td></tr></tbody></table></figure>
+<a id="more"></a>
+
+<p><strong>NOTES</strong></p>
+<ul>
+<li>调用方式1是在实例上调用类方法，类作为参数隐式的传给<code>cls</code></li>
+<li>调用方式2即约定俗成的调用方式，在类上调用类方法</li>
+</ul>
+<h3 id="staticmethod"><a href="#staticmethod" class="headerlink" title="staticmethod"></a>staticmethod</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>:</span></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">statmethod</span><span class="params">(arg)</span>:</span></span><br><span class="line">        print(<span class="string">"statmethod:"</span>, arg)</span><br><span class="line">        </span><br><span class="line">In [<span class="number">7</span>]: f = Foo()</span><br><span class="line"></span><br><span class="line">In [<span class="number">8</span>]: f.statmethod(<span class="number">1</span>)</span><br><span class="line">statmethod: <span class="number">1</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">9</span>]: Foo.statmethod(<span class="number">2</span>)</span><br><span class="line">statmethod: <span class="number">2</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">12</span>]: print(f.statmethod)</span><br><span class="line"><function Foo.statmethod at <span class="number">0x107d9e0e0</span>></span><br><span class="line"></span><br><span class="line">In [<span class="number">13</span>]: print(Foo.statmethod)</span><br><span class="line"><function Foo.statmethod at <span class="number">0x107d9e0e0</span>></span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>staticmethod</code>表现就如同常规方法一样，不用点在于，既可以在实例上调用也可以在类上调用。静态方法有点像C中具有<a href="http://bytenotes.xyz/2020/05/12/c-storage-class-notes/">块作用域的静态变量</a>，一旦模块被导入，类中的静态方法就会在内存栈中开辟一块区域，运行期间一直不变，因此实例上调用和类上调用的内存地址是一样的</p>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>这两个方法从语法上较简单，作用要从面对对象的设计角度来考量：</p>
+<ul>
+<li>类方法的作用是实现其他语言如Java中构造方法重载的功能</li>
+</ul>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    </span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fromAge</span><span class="params">(self, age)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>静态方法主要用来设计类对象的工具方法</li>
+</ul>
+<p><strong>参考:</strong></p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/136097/difference-between-staticmethod-and-classmethod" target="_blank" rel="noopener">Difference between staticmethod and classmethod</a></li>
+<li><a href="https://realpython.com/instance-class-and-static-methods-demystified/" target="_blank" rel="noopener">Python’s Instance, Class, and Static Methods Demystified</a></li>
+</ul>
+<h2 id="private和protected属性"><a href="#private和protected属性" class="headerlink" title="private和protected属性"></a>private和protected属性</h2><p>Python中对类的属性访问限制没有语法上限制，只有约定俗成的用法：</p>
+<ul>
+<li>两个前导下划线表示私有属性</li>
+</ul>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        self.__x = x</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>一个前导下划线表示受保护的属性</li>
+</ul>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        self._x = x</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>实际运用中一般只使用一个前导下划线，两个前导下划线一般是Python库中使用的</strong></p>
+<h2 id="slots类属性"><a href="#slots类属性" class="headerlink" title="slots类属性"></a><strong>slots</strong>类属性</h2><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/notes/" rel="tag"># notes</a>
+              <a href="/tags/python/" rel="tag"># python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/21/unix-process-control/" rel="prev" title="进程控制笔记">
+      <i class="fa fa-chevron-left"></i> 进程控制笔记
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#classmethod与staticmethod"><span class="nav-number">1.</span> <span class="nav-text">classmethod与staticmethod</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#classmethod"><span class="nav-number">1.1.</span> <span class="nav-text">classmethod</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#staticmethod"><span class="nav-number">1.2.</span> <span class="nav-text">staticmethod</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用"><span class="nav-number">1.3.</span> <span class="nav-text">作用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#private和protected属性"><span class="nav-number">2.</span> <span class="nav-text">private和protected属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slots类属性"><span class="nav-number">3.</span> <span class="nav-text">slots类属性</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ChiaFei</p>
+  <div class="site-description" itemprop="description">Keep Thinking, Keep Praticing</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chaifeilee" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chaifeilee" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/chiafeilee" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;chiafeilee" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ChiaFei</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme: 'forest',
+      logLevel: 3,
+      flowchart: { curve: 'linear' },
+      gantt: { axisFormat: '%m/%d/%Y' },
+      sequence: { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+
+  
+
+  
+
+</body>
+</html>

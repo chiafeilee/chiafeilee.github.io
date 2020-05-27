@@ -177,6 +177,78 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bytenotes.xyz/2020/05/26/python-custom-class/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ChiaFei">
+      <meta itemprop="description" content="Keep Thinking, Keep Praticing">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="字节笔记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/26/python-custom-class/" class="post-title-link" itemprop="url">Python自定义类笔记</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-26 23:52:28" itemprop="dateCreated datePublished" datetime="2020-05-26T23:52:28+08:00">2020-05-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-27 21:46:26" itemprop="dateModified" datetime="2020-05-27T21:46:26+08:00">2020-05-27</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="classmethod与staticmethod"><a href="#classmethod与staticmethod" class="headerlink" title="classmethod与staticmethod"></a>classmethod与staticmethod</h2><h3 id="classmethod"><a href="#classmethod" class="headerlink" title="classmethod"></a>classmethod</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span>:</span></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clsmethod</span><span class="params">(cls, x)</span>:</span></span><br><span class="line">        print(<span class="string">"clsmethod(cls, x)"</span>, cls, x)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span><span class="params">(Animal)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">   </span><br><span class="line">In [<span class="number">2</span>]: a = Animal()</span><br><span class="line"></span><br><span class="line">In [<span class="number">3</span>]: a.clsmethod(<span class="number">1</span>) <span class="comment"># 调用方式1</span></span><br><span class="line">clsmethod(cls, x) <<span class="class"><span class="keyword">class</span> '<span class="title">__main__</span>.<span class="title">Animal</span>'> 1</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">In</span> [4]:</span> Animal.clsmethod(<span class="number">1</span>) <span class="comment"># 调用方式2</span></span><br><span class="line">clsmethod(cls, x) <<span class="class"><span class="keyword">class</span> '<span class="title">__main__</span>.<span class="title">Animal</span>'> 1</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">In</span> [5]:</span> Cat.clsmethod(<span class="number">2</span>) <span class="comment"># 派生类对象作为cls参数传入类方法</span></span><br><span class="line">clsmethod(cls, x) <<span class="class"><span class="keyword">class</span> '<span class="title">__main__</span>.<span class="title">Cat</span>'> 2</span></span><br></pre></td></tr></tbody></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/05/26/python-custom-class/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://bytenotes.xyz/2020/05/21/unix-process-control/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +280,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-22 00:23:59" itemprop="dateModified" datetime="2020-05-22T00:23:59+08:00">2020-05-22</time>
+                <time title="修改时间：2020-05-27 21:42:01" itemprop="dateModified" datetime="2020-05-27T21:42:01+08:00">2020-05-27</time>
               </span>
 
           
@@ -856,91 +928,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://bytenotes.xyz/2017/07/05/most-important-thinking-and-congnitive-model-of-munger/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ChiaFei">
-      <meta itemprop="description" content="Keep Thinking, Keep Praticing">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="字节笔记">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2017/07/05/most-important-thinking-and-congnitive-model-of-munger/" class="post-title-link" itemprop="url">穷查理宝典的那些重要思维及认知</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2017-07-05 22:00:27" itemprop="dateCreated datePublished" datetime="2017-07-05T22:00:27+08:00">2017-07-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2017-07-28 11:56:34" itemprop="dateModified" datetime="2017-07-28T11:56:34+08:00">2017-07-28</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>凡是往简单处想，往认真处行。— 查理·芒格</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2017/07/05/most-important-thinking-and-congnitive-model-of-munger/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -988,7 +975,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
