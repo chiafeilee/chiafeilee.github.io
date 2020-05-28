@@ -48,18 +48,19 @@
 </script>
 
   <meta name="description" content="进程模型 计算机上所有可运行的软件，被组织成若干顺序进程，简称进程。一个进程就是一个正在执行程序的实例，包括程序计数器、寄存器和变量的当前值">
-<meta name="keywords" content="notes,Unix&#x2F;Linux,操作系统">
+<meta name="keywords" content="notes,操作系统,Unix&#x2F;Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="进程控制笔记">
 <meta property="og:url" content="https:&#x2F;&#x2F;bytenotes.xyz&#x2F;2020&#x2F;05&#x2F;21&#x2F;unix-process-control&#x2F;index.html">
 <meta property="og:site_name" content="字节笔记">
 <meta property="og:description" content="进程模型 计算机上所有可运行的软件，被组织成若干顺序进程，简称进程。一个进程就是一个正在执行程序的实例，包括程序计数器、寄存器和变量的当前值">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;bytenotes.xyz&#x2F;images&#x2F;37FDEB26-A310-48B0-9CAD-8E0B3C4475F6.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;bytenotes.xyz&#x2F;images&#x2F;BC8ADF48-AF6E-4EE7-A116-55FCF855AB6B.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;bytenotes.xyz&#x2F;images&#x2F;ED8AAC5C-3890-4D25-8CBE-D1B50761D208.png">
-<meta property="og:updated_time" content="2020-05-28T07:19:18.522Z">
+<meta property="og:updated_time" content="2020-05-28T09:34:36.064Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;bytenotes.xyz&#x2F;images&#x2F;BC8ADF48-AF6E-4EE7-A116-55FCF855AB6B.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;bytenotes.xyz&#x2F;images&#x2F;37FDEB26-A310-48B0-9CAD-8E0B3C4475F6.png">
 
 <link rel="canonical" href="https://bytenotes.xyz/2020/05/21/unix-process-control/">
 
@@ -212,7 +213,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-28 15:19:18" itemprop="dateModified" datetime="2020-05-28T15:19:18+08:00">2020-05-28</time>
+                <time title="修改时间：2020-05-28 17:34:36" itemprop="dateModified" datetime="2020-05-28T17:34:36+08:00">2020-05-28</time>
               </span>
 
           
@@ -275,7 +276,28 @@
 <p>当多个进程对共享数据进行处理，但最后的结果取决于进程的运行顺序时，即认为发生了竞争条件</p>
 </blockquote>
 <p><strong>fork之后进程的运行依赖于系统负载及内核的调度算法，所以父进程和子进程哪个先运行是未知的</strong></p>
-<h2 id="wait和waitpid函数"><a href="#wait和waitpid函数" class="headerlink" title="wait和waitpid函数"></a>wait和waitpid函数</h2><h2 id="exec函数"><a href="#exec函数" class="headerlink" title="exec函数"></a>exec函数</h2><p><img src="/images/BC8ADF48-AF6E-4EE7-A116-55FCF855AB6B.png" alt="7e2f9f39318931afee18d4aed10f9964"></p>
+<h2 id="wait和waitpid函数"><a href="#wait和waitpid函数" class="headerlink" title="wait和waitpid函数"></a>wait和waitpid函数</h2><p><img src="/images/37FDEB26-A310-48B0-9CAD-8E0B3C4475F6.png" alt="e3faaaefe9f41c22414142949a96a393"></p>
+<p>子进程在正常或异常终止时，内核会向其父进程发送SIGCHLD信号，父进程可以用<code>wait</code>或<code>waitpid</code>函数就是来处理这种状况<br>调用<code>wait</code>或<code>waitpid</code>函数时，进程可能会发生：</p>
+<ul>
+<li>如果所有子进程都在运行，则阻塞</li>
+<li>如果一个子进程已终止，正等待父进程获取其终止的状态，则取得该子进程的终止状态立即返回</li>
+<li>如果没有任何子进程，则立即出错</li>
+</ul>
+<p>语法</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pid_t</span> wait(<span class="keyword">int</span> *statloc);</span><br><span class="line"><span class="keyword">pid_t</span> waitpid(<span class="keyword">pid_t</span> pid, <span class="keyword">int</span> *statloc, <span class="keyword">int</span> options);</span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>waitpid</code>函数的<code>pid</code>参数的作用：</p>
+<ul>
+<li>pid == -1，等待任一子进程，与wait函数等效</li>
+<li>pid > 0，等待进程ID与pid相等的子进程</li>
+<li>pid == 0，等待组ID等于调用进程组ID的任一子进程</li>
+<li>pid < 1，等待组ID等于pid绝对值的任一子进程</li>
+</ul>
+<p><strong>参考：</strong></p>
+<ul>
+<li><a href="https://www.geeksforgeeks.org/wait-system-call-c/" target="_blank" rel="noopener">Wait System Call in C</a></li>
+</ul>
+<h2 id="exec函数"><a href="#exec函数" class="headerlink" title="exec函数"></a>exec函数</h2><p><img src="/images/BC8ADF48-AF6E-4EE7-A116-55FCF855AB6B.png" alt="7e2f9f39318931afee18d4aed10f9964"></p>
 <p>7个exec函数</p>
 <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">execl</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *pathname, <span class="keyword">const</span> <span class="keyword">char</span> *arg, …, <span class="literal">NULL</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">execv</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *pathname, <span class="keyword">char</span> *<span class="keyword">const</span> argv[])</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">execle</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *pathname, <span class="keyword">const</span> <span class="keyword">char</span> *arg, …, <span class="literal">NULL</span>, <span class="keyword">char</span> *<span class="keyword">const</span> envp[] )</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">execve</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *pathname, <span class="keyword">char</span> *<span class="keyword">const</span> argv[], <span class="keyword">char</span> *<span class="keyword">const</span> envp[])</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">execlp</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *filename, <span class="keyword">const</span> <span class="keyword">char</span> *arg, …, <span class="literal">NULL</span> )</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">execvp</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *filename, <span class="keyword">char</span> *<span class="keyword">const</span> argv[])</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fexecve</span><span class="params">(<span class="keyword">int</span> fd, <span class="keyword">char</span> *<span class="keyword">const</span> argv, <span class="keyword">char</span> *<span class="keyword">const</span> envp[])</span></span>;</span><br></pre></td></tr></tbody></table></figure>
 
@@ -371,8 +393,8 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/notes/" rel="tag"># notes</a>
-              <a href="/tags/Unix-Linux/" rel="tag"># Unix/Linux</a>
               <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag"># 操作系统</a>
+              <a href="/tags/Unix-Linux/" rel="tag"># Unix/Linux</a>
           </div>
 
         
