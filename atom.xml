@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>chiafei&#39;s blog</title>
+  
+  
+  <link href="https://chiafei.io/atom.xml" rel="self"/>
+  
+  <link href="https://chiafei.io/"/>
+  <updated>2024-04-01T14:23:11.663Z</updated>
+  <id>https://chiafei.io/</id>
+  
+  <author>
+    <name>ChiaFei</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Github Page + Godaddy + Cloudflare配置</title>
+    <link href="https://chiafei.io/2024/04/01/github-page-godaddy-cloudflare/"/>
+    <id>https://chiafei.io/2024/04/01/github-page-godaddy-cloudflare/</id>
+    <published>2024-04-01T05:59:04.000Z</published>
+    <updated>2024-04-01T14:23:11.663Z</updated>
+    
+    <content type="html"><![CDATA[<p>用 Github Page 搭建个人博客，域名在狗爹上买，CDN 用 cloudflare，本文记录下配置的过程。<br><img src="/images/github-page-godaddy-cloudflare.png"></p><span id="more"></span><h1 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h1><p>打开 <a href="https://www.godaddy.com/">Godaddy</a>，搜索心仪的域名，加购，支付，一波流结束。</p><h1 id="配置-Github-Page"><a href="#配置-Github-Page" class="headerlink" title="配置 Github Page"></a>配置 Github Page</h1><p>打开 <a href="https://github.com/">Github</a>，新建一个仓库，仓库名为 <code>username.github.io</code>，其中 <code>username</code> 是你的 Github 用户名。<br><img src="/images/repo-create-global-nav-update.png"><br>导航至仓库<code>settings</code>下的<code>Pages</code>目录，把部署来源改设置为<code>Deploy from a branch</code>。<br><img src="/images/github-page-source.png"></p><h1 id="配置自定义域名"><a href="#配置自定义域名" class="headerlink" title="配置自定义域名"></a>配置自定义域名</h1><h2 id="Cloudflare-域名托管"><a href="#Cloudflare-域名托管" class="headerlink" title="Cloudflare 域名托管"></a>Cloudflare 域名托管</h2><p>打开 <a href="https://www.cloudflare.com/">Cloudflare</a>，添加站点，输入购买的域名，选免费模式。<br><img src="/images/cloudflare-add-site.png"><br>添加 Github Pages 的<code>A</code>记录，指向以下的 IP 地址：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">185.199.108.153</span><br><span class="line">185.199.109.153</span><br><span class="line">185.199.110.153</span><br><span class="line">185.199.111.153</span><br></pre></td></tr></table></figure><p><img src="/images/cloudflare-dns-records.png"></p><h2 id="Godaddy-更改nameserver"><a href="#Godaddy-更改nameserver" class="headerlink" title="Godaddy 更改nameserver"></a>Godaddy 更改<code>nameserver</code></h2><p>打开<code>Godaddy</code>，找到域名管理，更改<code>nameserver</code>为<code>Cloudflare</code>提供的<code>nameserver</code>。<br><img src="/images/godaddy-nameservers.png"><br><img src="/images/cloudflare-nameservers.png"></p><h2 id="为域名增加-SSL-保护"><a href="#为域名增加-SSL-保护" class="headerlink" title="为域名增加 SSL 保护"></a>为域名增加 SSL 保护</h2><p>在<code>Cloudflare</code>的<code>SSL/TLS</code>设置中，开启<code>Full</code>模式，这样就可以为域名增加 SSL 保护。<br><img src="/images/cloudflare-ssl.png"></p><h1 id="Github-Page-配置自定义域名"><a href="#Github-Page-配置自定义域名" class="headerlink" title="Github Page 配置自定义域名"></a>Github Page 配置自定义域名</h1><p>在 Github 仓库的<code>settings</code>下的<code>Pages</code>目录，输入自定义域名。<br><img src="/images/github-page-custom-domain.png"></p><p>这一步做完后会在仓库的根目录下生成一个<code>CNAME</code>文件，里面存放的就是自定义域名。我们可以访问自定义域名来验证是否配置成功。<br>如果不成功，可以通过<code>dig</code>命令来查看域名解析情况。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig custom-domain.com</span><br></pre></td></tr></table></figure><p>另外也可以看看<code>cloudflare</code>中是否设置了<code>CNAME</code>的记录。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;用 Github Page 搭建个人博客，域名在狗爹上买，CDN 用 cloudflare，本文记录下配置的过程。&lt;br&gt;&lt;img src=&quot;/images/github-page-godaddy-cloudflare.png&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="教程" scheme="https://chiafei.io/tags/%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
+  
+</feed>
