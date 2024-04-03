@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://chiafei.io/2024/04/03/how-to-recharge-chatgpt/</loc>
+    
+    <lastmod>2024-04-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://chiafei.io/2024/04/01/github-page-godaddy-cloudflare/</loc>
     
     <lastmod>2024-04-02</lastmod>
@@ -49,7 +58,7 @@
 
   <url>
     <loc>https://chiafei.io/</loc>
-    <lastmod>2024-04-02</lastmod>
+    <lastmod>2024-04-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -57,7 +66,14 @@
   
   <url>
     <loc>https://chiafei.io/tags/%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2024-04-02</lastmod>
+    <lastmod>2024-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://chiafei.io/tags/ChatGPT/</loc>
+    <lastmod>2024-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
