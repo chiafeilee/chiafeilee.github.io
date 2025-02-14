@@ -10,7 +10,7 @@
   
   <title>
     
-      Tags | chiafei&#39;s blog
+      chiafei&#39;s blog
     
   </title>
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -165,87 +165,60 @@
 </header>
 
     <div id="article-banner">
-  <h2>Tags</h2>
-  <p class="post-date">Tag Retrieval</p>
+  <h2>Archives</h2>
+  <p class="post-date">Archives</p>
 </div>
-<main class="app-body">
-  <div id="tag-cloud">
+<main class="app-body" id="archives">
+  
+  
+  
+    <section class="time-section">
+  <h1 class="section-year">
+    2025
+  </h1>
+  <div class="section-list">
     
-      <a class="tag1" data-name="tag-教程">教程</a>
     
-      <a class="tag2" data-name="tag-ChatGPT">ChatGPT</a>
-    
-      <a class="tag0" data-name="tag-Python">Python</a>
-    
-      <a class="tag2" data-name="tag-设计模式">设计模式</a>
+      <div class="section-list-item">
+        <a href="/2025/02/14/abstract-factory/" class="archive-title">抽象工厂模式</a>
+        <p class="archive-date">02-14</p>
+      </div>
     
   </div>
+</section>
   
-    <div class="tag-list">
-      <h3 class="tag-name" id="tag-教程">教程</h3>
-      
-        <ul class="tag-preview">
-          <li>
-            <a href="/2024/04/01/github-page-godaddy-cloudflare/">Github Page + Godaddy + Cloudflare配置</a>
-          </li>
-        </ul>
-        
-        <ul class="tag-preview">
-          <li>
-            <a href="/2024/04/03/how-to-recharge-chatgpt/">Save time~亲测有效的ChatGPT充值方法</a>
-          </li>
-        </ul>
-        
-    </div>
+    <section class="time-section">
+  <h1 class="section-year">
+    2024
+  </h1>
+  <div class="section-list">
     
-    <div class="tag-list">
-      <h3 class="tag-name" id="tag-ChatGPT">ChatGPT</h3>
-      
-        <ul class="tag-preview">
-          <li>
-            <a href="/2024/04/03/how-to-recharge-chatgpt/">Save time~亲测有效的ChatGPT充值方法</a>
-          </li>
-        </ul>
-        
-    </div>
     
-    <div class="tag-list">
-      <h3 class="tag-name" id="tag-Python">Python</h3>
-      
-        <ul class="tag-preview">
-          <li>
-            <a href="/2024/05/31/how-to-use-python-match-case-statement/">Python新特性 match-case 语句</a>
-          </li>
-        </ul>
-        
-    </div>
+      <div class="section-list-item">
+        <a href="/2024/05/31/how-to-use-python-match-case-statement/" class="archive-title">Python新特性 match-case 语句</a>
+        <p class="archive-date">05-31</p>
+      </div>
     
-    <div class="tag-list">
-      <h3 class="tag-name" id="tag-设计模式">设计模式</h3>
-      
-        <ul class="tag-preview">
-          <li>
-            <a href="/2025/02/14/abstract-factory/">抽象工厂模式</a>
-          </li>
-        </ul>
-        
-    </div>
+      <div class="section-list-item">
+        <a href="/2024/04/03/how-to-recharge-chatgpt/" class="archive-title">Save time~亲测有效的ChatGPT充值方法</a>
+        <p class="archive-date">04-03</p>
+      </div>
     
+      <div class="section-list-item">
+        <a href="/2024/04/01/github-page-godaddy-cloudflare/" class="archive-title">Github Page + Godaddy + Cloudflare配置</a>
+        <p class="archive-date">04-01</p>
+      </div>
+    
+  </div>
+</section>
+  
 </main>
 
 <script>
   (function () {
-    var url = 'https://chiafei.io/tags/index.html'
-    $('#article-banner').geopattern(url)
-    $('.header').removeClass('fixed-header')
-
-    var tag = location.hash.replace('#', '')
-    if (tag) {
-      var tagId = "#tag-" + tag;
-      $("html, body").animate({
-        scrollTop: $(tagId).offset().top 
-      }, 400)
-    }
+    var url = 'https://chiafei.io/archives/2025/02/index.html';
+    $('#article-banner').geopattern(url);
+    $('.header').removeClass('fixed-header');
   })();
 </script>
     <div class="scroll-top">

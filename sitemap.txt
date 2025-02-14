@@ -1,4 +1,6 @@
 https://chiafei.io/2024/04/03/how-to-recharge-chatgpt/
+https://chiafei.io/2025/02/14/abstract-factory/
+https://chiafei.io/2024/05/31/how-to-use-python-match-case-statement/
 https://chiafei.io/2024/04/01/github-page-godaddy-cloudflare/
 https://chiafei.io/tags/
 https://chiafei.io/project/
@@ -7,3 +9,5 @@ https://chiafei.io/about/
 https://chiafei.io/
 https://chiafei.io/tags/%E6%95%99%E7%A8%8B/
 https://chiafei.io/tags/ChatGPT/
+https://chiafei.io/tags/Python/
+https://chiafei.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/

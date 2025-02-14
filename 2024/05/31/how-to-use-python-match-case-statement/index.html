@@ -10,7 +10,7 @@
   
   <title>
     
-      Tags | chiafei&#39;s blog
+      Python新特性 match-case 语句 | chiafei&#39;s blog
     
   </title>
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -165,89 +165,161 @@
 </header>
 
     <div id="article-banner">
-  <h2>Tags</h2>
-  <p class="post-date">Tag Retrieval</p>
+  <h2>Python新特性 match-case 语句</h2>
+  <p class="post-date">2024-05-31</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
 </div>
-<main class="app-body">
-  <div id="tag-cloud">
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>看了一堆 PEPs 和文章，日常不使用就忘了 😂。看来这个特性不是<code>everyday coding</code>中必用的，不过还是写个笔记再重新理解一下这个特性。</p>
+<span id="more"></span>
+
+<h1 id="match-case是什么？"><a href="#match-case是什么？" class="headerlink" title="match-case是什么？"></a><code>match-case</code>是什么？</h1><p><code>match-case</code>本质是<code>Pattern Matching</code>即模式匹配，这概念是从函数式语言如<code>Haskell</code>、<code>Scala</code>、<code>Erlang</code>等中借鉴过来的。一个<code>match</code>表达式包含多个<code>case</code>分支，每个<code>case</code>分支可能包含以下三个部分</p>
+<ul>
+<li>模式</li>
+<li>可选的<code>if</code>条件</li>
+<li>被执行的代码块</li>
+</ul>
+<p><code>match</code>会比较值（即<code>subject</code>）和每个<code>case</code>的模式，直到找到匹配的<code>case</code>，没有则执行默认的<code>case</code>。<br>初看这个语法，会想到<code>switch-case</code>，进而可能会想到以下类似的 demo</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">match</span> status_code:</span><br><span class="line">  <span class="keyword">case</span> <span class="number">200</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;success&#x27;</span>)</span><br><span class="line">  <span class="keyword">case</span> <span class="number">404</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;not found&#x27;</span>)</span><br><span class="line">  <span class="keyword">case</span> <span class="number">500</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;server error&#x27;</span>)</span><br><span class="line">  <span class="keyword">case</span> _:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;unknown status code&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>但，这并不是这个特性设计的初衷，它使用场景主要是为了支持<code>destructuring</code>和<code>binding</code>，其实就是<code>unpacking</code>。</p>
+</section>
+    <!-- Tags START -->
     
-      <a class="tag1" data-name="tag-教程">教程</a>
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Python" >
+    <span class="tag-code">Python</span>
+  </a>
+
+      </div>
     
-      <a class="tag2" data-name="tag-ChatGPT">ChatGPT</a>
+    <!-- Tags END -->
+    <!-- NAV START -->
     
-      <a class="tag0" data-name="tag-Python">Python</a>
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="tag2" data-name="tag-设计模式">设计模式</a>
+      <a class="nav-left" href="/2024/04/03/how-to-recharge-chatgpt/">
+        <span class="nav-arrow">← </span>
+        
+          Save time~亲测有效的ChatGPT充值方法
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2025/02/14/abstract-factory/">
+        
+          抽象工厂模式
+        
+        <span class="nav-arrow"> →</span>
+      </a>
     
   </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Disqus START -->
+      <div id="disqus_thread"></div>
+      <!-- Disqus END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
   
-    <div class="tag-list">
-      <h3 class="tag-name" id="tag-教程">教程</h3>
-      
-        <ul class="tag-preview">
-          <li>
-            <a href="/2024/04/01/github-page-godaddy-cloudflare/">Github Page + Godaddy + Cloudflare配置</a>
-          </li>
-        </ul>
-        
-        <ul class="tag-preview">
-          <li>
-            <a href="/2024/04/03/how-to-recharge-chatgpt/">Save time~亲测有效的ChatGPT充值方法</a>
-          </li>
-        </ul>
-        
-    </div>
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
     
-    <div class="tag-list">
-      <h3 class="tag-name" id="tag-ChatGPT">ChatGPT</h3>
-      
-        <ul class="tag-preview">
-          <li>
-            <a href="/2024/04/03/how-to-recharge-chatgpt/">Save time~亲测有效的ChatGPT充值方法</a>
-          </li>
-        </ul>
-        
-    </div>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#match-case%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-nav-text">match-case是什么？</span></a></li></ol>
     
-    <div class="tag-list">
-      <h3 class="tag-name" id="tag-Python">Python</h3>
-      
-        <ul class="tag-preview">
-          <li>
-            <a href="/2024/05/31/how-to-use-python-match-case-statement/">Python新特性 match-case 语句</a>
-          </li>
-        </ul>
-        
-    </div>
-    
-    <div class="tag-list">
-      <h3 class="tag-name" id="tag-设计模式">设计模式</h3>
-      
-        <ul class="tag-preview">
-          <li>
-            <a href="/2025/02/14/abstract-factory/">抽象工厂模式</a>
-          </li>
-        </ul>
-        
-    </div>
-    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
 </main>
 
 <script>
   (function () {
-    var url = 'https://chiafei.io/tags/index.html'
-    $('#article-banner').geopattern(url)
+    var url = 'https://chiafei.io/2024/05/31/how-to-use-python-match-case-statement/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
     $('.header').removeClass('fixed-header')
 
-    var tag = location.hash.replace('#', '')
-    if (tag) {
-      var tagId = "#tag-" + tag;
-      $("html, body").animate({
-        scrollTop: $(tagId).offset().top 
-      }, 400)
-    }
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
   })();
 </script>
+
+
+
+
+
+
+  <script>
+    var disqus_shortname = 'kafeimao';
+    
+    var disqus_url = 'https://chiafei.io/2024/05/31/how-to-use-python-match-case-statement/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//go.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
     <div class="scroll-top">
   <span class="arrow-icon"></span>
 </div>

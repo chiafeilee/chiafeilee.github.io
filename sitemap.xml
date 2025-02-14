@@ -4,7 +4,25 @@
   <url>
     <loc>https://chiafei.io/2024/04/03/how-to-recharge-chatgpt/</loc>
     
-    <lastmod>2024-04-03</lastmod>
+    <lastmod>2025-02-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://chiafei.io/2025/02/14/abstract-factory/</loc>
+    
+    <lastmod>2025-02-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://chiafei.io/2024/05/31/how-to-use-python-match-case-statement/</loc>
+    
+    <lastmod>2024-06-04</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -58,7 +76,7 @@
 
   <url>
     <loc>https://chiafei.io/</loc>
-    <lastmod>2024-04-10</lastmod>
+    <lastmod>2025-02-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -66,14 +84,28 @@
   
   <url>
     <loc>https://chiafei.io/tags/%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2024-04-10</lastmod>
+    <lastmod>2025-02-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://chiafei.io/tags/ChatGPT/</loc>
-    <lastmod>2024-04-10</lastmod>
+    <lastmod>2025-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://chiafei.io/tags/Python/</loc>
+    <lastmod>2025-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://chiafei.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2025-02-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
